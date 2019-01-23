@@ -181,6 +181,13 @@ make_gridpack () {
       ./bin/mg5_aMC mgconfigscript
     
       #load extra models if needed
+      ##load bbh model-loop_sm_MSbar_yb
+      #jhchoi@cern.ch#
+      wget http://147.47.242.72/USER/jhchoi/hww/bbh_ufo_model/loop_sm_MSbar_yb.tar
+      cd models 
+      tar -xf ../loop_sm_MSbar_yb.tar
+      cd -
+      ###################################
       if [ -e $CARDSDIR/${name}_extramodels.dat ]; then
         echo "Loading extra models specified in $CARDSDIR/${name}_extramodels.dat"
         #strip comments
@@ -616,14 +623,18 @@ if [ -n "$5" ]
   then
     scram_arch=${5}
   else
-    scram_arch=slc6_amd64_gcc481
+    #scram_arch=slc6_amd64_gcc481
+    scram_arch=slc6_amd64_gcc630
+
 fi
 
 if [ -n "$6" ]
   then
     cmssw_version=${6}
   else
-    cmssw_version=CMSSW_7_1_30
+#    cmssw_version=CMSSW_7_1_30
+    cmssw_version=CMSSW_9_3_8
+
 fi
  
 # jobstep can be 'ALL','CODEGEN', 'INTEGRATE', 'MADSPIN'
