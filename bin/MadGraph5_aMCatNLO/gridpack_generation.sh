@@ -182,6 +182,14 @@ make_gridpack () {
       ./bin/mg5_aMC mgconfigscript
     
       #load extra models if needed
+            ##load bbh model-loop_sm_MSbar_yb
+      #jhchoi@cern.ch#
+      wget http://147.47.242.72/USER/jhchoi/hww/bbh_ufo_model/loop_sm_MSbar_yb.tar
+      cd models
+      tar -xf ../loop_sm_MSbar_yb.tar
+      cd -
+      ###################################
+
       if [ -e $CARDSDIR/${name}_extramodels.dat ]; then
         echo "Loading extra models specified in $CARDSDIR/${name}_extramodels.dat"
         #strip comments
