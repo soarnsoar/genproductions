@@ -62,8 +62,18 @@ def prepareCondorScript( tag, i, folderName, queue, SCALE = '0', runInBatchDir =
    f.write('log                     = ' + logname + '.log \n')
    if not runInBatchDir:
        f.write('initialdir              = ' + rootfolder + '/' + folderName + '\n')
+   
 
-   f.write('+JobFlavour             = "'+ queue +'" \n') 
+
+   myhost = os.uname()[1]
+   if "ui20" in myhost:
+      print "@@@@@@@@@@KISTI ui20@@@@@@@@@@@@@@@@"
+      f.write('requirements = ( HasSingularity == true ) \n')
+      f.write('accounting_group = group_cms\n')
+      f.write('+SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el6:latest" \n')
+      f.write('+SingularityBind = "/cvmfs, /cms, /share" \n')
+   else :
+      f.write('+JobFlavour             = "'+ queue +'" \n') 
 
    f.write('periodic_remove         = JobStatus == 5  \n')
    f.write('WhenToTransferOutput    = ON_EXIT_OR_EVICT \n')
