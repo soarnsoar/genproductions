@@ -19,14 +19,14 @@ cat<<-EOF
 	+WantIOProxy=true
         +IsGridpack=true
         +GridpackCard = "${card_name}"
-+DESIRED_Sites="T2_US_MIT,T2_US_Florida,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T2_US_Caltech,T2_US_Nebraska,T3_US_Baylor,T3_US_Colorado,T3_US_Cornell,T3_US_FIT,T3_US_FIU,T3_US_NotreDame,T3_US_Omaha_Long,T3_US_OSU,T3_US_PuertoRico,T3_US_Rutgers,T3_US_TAMU,T3_US_TTU,T3_US_UCD,T3_US_UCR,T3_US_UCSB,T3_US_UMD,T3_US_UMiss"	
++DESIRED_Sites="T2_US_MIT,T2_US_Florida,T2_US_Purdue,T2_US_UCSD,T2_US_Wisconsin,T2_US_Caltech,T2_US_Nebraska,T3_US_Baylor,T3_US_Colorado,T3_US_Cornell,T3_US_FIT,T3_US_FIU,T3_US_NotreDame,T3_US_Omaha_Long,T3_US_OSU,T3_US_Rutgers,T3_US_TAMU,T3_US_TTU,T3_US_UCD,T3_US_UCR,T3_US_UCSB,T3_US_UMD,T3_US_UMiss"	
 	+REQUIRED_OS = "rhel6"
 	request_cpus = $cores
 	request_memory = $memory
 	Queue 1
 EOF
 }
-
+#black list : T3_US_PuertoRico , T2_US_Vanderbilt
 create_codegen_exe(){
 cat<<-EOF
 	#! /bin/bash
