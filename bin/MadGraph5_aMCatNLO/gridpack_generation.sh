@@ -108,7 +108,16 @@ make_gridpack () {
       #############################################
       #Copy, Unzip and Delete the MadGraph tarball#
       #############################################
-      wget --no-check-certificate ${MGSOURCE}
+      #wget --no-check-certificate ${MGSOURCE}
+      if [[ "$HOSTNAME" == *pku* ]];then
+	  echo pku
+	  cp /home/cmsdas/junho/MGsource/${MG} .
+	  
+      else
+	  wget --no-check-certificate ${MGSOURCE} 
+      fi
+
+      cp /home/cmsdas/junho/MGsource/${MG}
       tar xzf ${MG}
       rm "$MG"
     
